@@ -114,4 +114,42 @@ databaseChangeLog:
             baseColumnNames: id_bicicleta
             referencedTableName: Bicicleta
             referencedColumnNames: id
-            constraintName: fk_id_bicicleta_tranca_bicicleta
+            constraintName: fk_id_bicicleta
+  - changeSet:
+      id:  1-tabela-TotemTranca
+      author:  thaissa
+      labels: equipamento_TotemTranca
+      comment: adição da tabela associação TotemTranca
+      changes:
+        - createTable:
+            tableName:  TotemTranca
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  id_totem
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  id_tranca
+                  type:  int
+                  constraints:
+                    nullable:  false
+        - addForeignKeyConstraint:
+            baseTableName: TotemTranca
+            baseColumnNames: id_totem
+            referencedTableName: Totem
+            referencedColumnNames: id
+            constraintName: fk_id_totem
+        - addForeignKeyConstraint:
+            baseTableName: TotemTranca
+            baseColumnNames: id_tranca
+            referencedTableName: Tranca
+            referencedColumnNames: id
+            constraintName: fk_id_tranca
