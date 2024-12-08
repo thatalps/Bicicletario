@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id:  1-tabela-bicicleta
+      author:  thaissa
+      labels: equipamento_bicicleta
+      comment: adição da tabela de bicicleta
+      changes:
+        - createTable:
+            tableName:  Bicicleta
+            columns:
+              - column:
+                  name:  id_bicicleta
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  numero
+                  type:  int
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  marca
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  modelo
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  ano
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  status
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
