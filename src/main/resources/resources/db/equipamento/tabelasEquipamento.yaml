@@ -41,3 +41,29 @@ databaseChangeLog:
                   type:  varchar(50)
                   constraints:
                     nullable:  false
+  - changeSet:
+      id:  1-tabela-totem
+      author:  thaissa
+      labels: equipamento_totem
+      comment: adição da tabela de totem
+      changes:
+        - createTable:
+            tableName:  Totem
+            columns:
+              - column:
+                  name:  id_totem
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  localizacao
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  descricao
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
