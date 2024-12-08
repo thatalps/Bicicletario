@@ -9,7 +9,7 @@ databaseChangeLog:
             tableName:  Email
             columns:
               - column:
-                  name:  id_email
+                  name:  id
                   type:  int
                   autoIncrement:  true
                   constraints:
@@ -40,7 +40,7 @@ databaseChangeLog:
             tableName:  Cobranca
             columns:
               - column:
-                  name:  id_cobranca
+                  name:  id
                   type:  int
                   autoIncrement:  true
                   constraints:
