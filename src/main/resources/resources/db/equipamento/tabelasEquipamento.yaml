@@ -19,7 +19,6 @@ databaseChangeLog:
                   name:  numero
                   type:  int
                   constraints:
-                    primaryKey:  true
                     nullable:  false
               - column:
                   name:  marca
