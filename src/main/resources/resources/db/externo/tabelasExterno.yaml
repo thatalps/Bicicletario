@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id:  1-tabela-email
+      author:  thaissa
+      labels: externo_email
+      comment: adição da tabela de email
+      changes:
+        - createTable:
+            tableName:  Email
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  destinatario
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  assunto
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  mensagem
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+  - changeSet:
+      id:  1-tabela-cobranca
+      author:  thaissa
+      labels: externo_cobranca
+      comment: adição da tabela de cobranca
+      changes:
+        - createTable:
+            tableName:  Cobranca
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  valor
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  ciclista
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  status
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  horaSolicitacao
+                  type:  TIMESTAMP
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  horaFinalizacao
+                  type:  TIMESTAMP
+                  constraints:
+                    nullable:  false

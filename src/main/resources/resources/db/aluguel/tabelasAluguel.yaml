@@ -1,0 +1,254 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-tabela-cartao
+      author: thaissa
+      labels: aluguel_cartao
+      comment: adição da tabela de cartao
+      changes:
+        - createTable:
+            tableName: Cartao
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome_titular
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: numero
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: validade
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cvv
+                  type: varchar(4)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+        id: 1-tabela-passaporte
+        author: thaissa
+        labels: aluguel_passsaporte
+        comment: adição da tabela de passaporte
+        changes:
+          - createTable:
+              tableName: Passaporte
+              columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: numero
+                    type: varchar(16)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: validade
+                    type: date
+                    constraints:
+                      nullable: false
+                - column:
+                    name: pais
+                    type: varchar(2)
+                    constraints:
+                      nullable: false
+
+  - changeSet:
+      id:  1-tabela-ciclista
+      author:  thaissa
+      labels: aluguel_bicicleta
+      comment: adição da tabela de ciclista
+      changes:
+        - createTable:
+            tableName:  Ciclista
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  nome
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  data_nascimento
+                  type:  Date
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  cpf
+                  type:  varchar(11)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name: nacionalidade
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name:  id_passaporte
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  id_cartao
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  email
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: url_foto_documento
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: Ciclista
+            baseColumnNames: id_passaporte
+            referencedTableName: Passaporte
+            referencedColumnNames: id
+            constraintName: fk_id_passaporte
+        - addForeignKeyConstraint:
+            baseTableName: Ciclista
+            baseColumnNames: id_cartao
+            referencedTableName: Cartao
+            referencedColumnNames: id
+            constraintName: fk_id_cartao
+
+  - changeSet:
+      id:  1-tabela-funcionario
+      author:  thaissa
+      labels: aluguel_funcionario
+      comment: adição da tabela de funcionario
+      changes:
+        - createTable:
+            tableName:  Funcionario
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  matricula
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  nome
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  idade
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  funcao
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  email
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  senha
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  confirmação_senha
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  cpf
+                  type:  varchar(11)
+                  constraints:
+                    nullable:  false
+
+  - changeSet:
+      id:  1-tabela-aluguel
+      author:  thaissa
+      labels: aluguel_aluguel
+      comment: adição da tabela de aluguel
+      changes:
+        - createTable:
+            tableName:  Aluguel
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  id_bicicleta
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  id_ciclista
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  id_tranca_inicio
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  hora_inicio
+                  type:  timestamp
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  id_tranca_fim
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  hora_fim
+                  type:  timestamp
+                  constraints:
+                    nullable:  false
+              - column:
+                   name: cobranca
+                   type: varchar(50)
+                   constraints:
+                     nullable: false
