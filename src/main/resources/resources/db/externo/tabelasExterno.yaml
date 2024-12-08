@@ -22,12 +22,12 @@ databaseChangeLog:
                     nullable:  false
               - column:
                   name:  assunto
-                  type:  varchar(50)
+                  type:  varchar(255)
                   constraints:
                     nullable:  false
               - column:
                   name:  mensagem
-                  type:  varchar(50)
+                  type:  varchar(255)
                   constraints:
                     nullable:  false
   - changeSet:
