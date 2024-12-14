@@ -90,6 +90,11 @@ databaseChangeLog:
                   constraints:
                     nullable:  false
               - column:
+                  name:  senha
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
                   name:  data_nascimento
                   type:  Date
                   constraints:
@@ -161,7 +166,6 @@ databaseChangeLog:
               - column:
                   name:  matricula
                   type:  int
-                  autoIncrement:  true
                   constraints:
                     primaryKey:  true
                     nullable:  false
