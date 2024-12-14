@@ -40,16 +40,6 @@ databaseChangeLog:
                   type:  varchar(50)
                   constraints:
                     nullable:  false
-              - column:
-                  name:  id_Funcionario
-                  type:  int
-                  constraints:
-                    nullable:  true
-              - column:
-                  name:  statusAcaoReparador
-                  type:  varchar(50)
-                  constraints:
-                    nullable:  true
 
   - changeSet:
       id:  1-tabela-totem
@@ -94,26 +84,30 @@ databaseChangeLog:
                     primaryKey:  true
                     nullable:  false
               - column:
-                  name:  id_bicicleta
+                  name:  numero
                   type:  int
                   constraints:
-                    nullable:  true
+                    nullable:  false
               - column:
                   name:  localizacao
                   type:  varchar(50)
                   constraints:
                     nullable:  false
               - column:
-                  name:  descricao
+                  name:  modelo
                   type:  varchar(50)
                   constraints:
                     nullable:  false
-        - addForeignKeyConstraint:
-            baseTableName: Tranca
-            baseColumnNames: id_bicicleta
-            referencedTableName: Bicicleta
-            referencedColumnNames: id
-            constraintName: fk_id_bicicleta
+              - column:
+                  name:  ano
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  status
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
 
   - changeSet:
       id:  1-tabela-TotemTranca
@@ -141,6 +135,21 @@ databaseChangeLog:
                   type:  int
                   constraints:
                     nullable:  false
+              - column:
+                  name:  ação
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  idFuncionario
+                  type:  int
+                  constraints:
+                    nullable:  true
+              - column:
+                  name:  statusAcaoReparador
+                  type:  varchar(20)
+                  constraints:
+                    nullable:  true
         - addForeignKeyConstraint:
             baseTableName: TotemTranca
             baseColumnNames: id_totem
@@ -153,3 +162,62 @@ databaseChangeLog:
             referencedTableName: Tranca
             referencedColumnNames: id
             constraintName: fk_id_tranca
+
+  - changeSet:
+      id:  1-tabela-BicicletaTranca
+      author:  thaissa
+      labels: equipamento_BicicletaTranca
+      comment: adição da tabela associação BicicletaTranca
+      changes:
+        - createTable:
+            tableName:  BicicletaTranca
+            columns:
+              - column:
+                  name:  id
+                  type:  int
+                  autoIncrement:  true
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  id_tranca
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  id_bicicleta
+                  type:  int
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  data_hora
+                  type:  timestamp
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  ação
+                  type:  varchar(50)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  idFuncionario
+                  type:  int
+                  constraints:
+                    nullable:  true
+              - column:
+                  name:  statusAcaoReparador
+                  type:  varchar(20)
+                  constraints:
+                    nullable:  true
+        - addForeignKeyConstraint:
+            baseTableName: BicicletaTranca
+            baseColumnNames: id_tranca
+            referencedTableName: Tranca
+            referencedColumnNames: id
+            constraintName: fk_id_tranca
+        - addForeignKeyConstraint:
+            baseTableName: BicicletaTranca
+            baseColumnNames: id_bicicleta
+            referencedTableName: Bicicleta
+            referencedColumnNames: id
+            constraintName: fk_id_bicicleta
